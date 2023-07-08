@@ -5,21 +5,21 @@
 class Reget < Formula
   desc "Download a specific or latest release/tag from github based on the API"
   homepage "https://github.com/januznl/reget"
-  version "0.1.1"
+  version "0.1.2"
   license "MIT"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/Januznl/reget/releases/download/v0.1.1/reget_Darwin_arm64.tar.gz"
-      sha256 "1447699c699bf4a10ca867114bc61bdc80500c51d5a72371df1a5878c85a8fcf"
+    if Hardware::CPU.intel?
+      url "https://github.com/Januznl/reget/releases/download/v0.1.2/reget_Darwin_x86_64.tar.gz"
+      sha256 "a4e64c7a9aad48ac8fa26d4cac34bab85beb266919d1c3b162d4822ec9c502ac"
 
       def install
         bin.install "reget"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/Januznl/reget/releases/download/v0.1.1/reget_Darwin_x86_64.tar.gz"
-      sha256 "928179ba32d5e48193b3804841541e6a27eb3f3df9cdf0ae409a15141a400075"
+    if Hardware::CPU.arm?
+      url "https://github.com/Januznl/reget/releases/download/v0.1.2/reget_Darwin_arm64.tar.gz"
+      sha256 "4b4d26a84ff596ca7b51b1eb57bb869a036eec389068c49adda8d95ee2e918b3"
 
       def install
         bin.install "reget"
@@ -28,25 +28,25 @@ class Reget < Formula
   end
 
   on_linux do
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/Januznl/reget/releases/download/v0.1.2/reget_Linux_arm64.tar.gz"
+      sha256 "2021c64b32cc268f508f92fee988cc3a1f9ef0fd99d76dc95427afbe4d9a49d3"
+
+      def install
+        bin.install "reget"
+      end
+    end
     if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-      url "https://github.com/Januznl/reget/releases/download/v0.1.1/reget_Linux_armv6.tar.gz"
-      sha256 "b244f7bf2049c066e500e9e484e240cf1065796ce1ee5a8af66785dad71a53fc"
+      url "https://github.com/Januznl/reget/releases/download/v0.1.2/reget_Linux_armv6.tar.gz"
+      sha256 "c10d3fa5ffcb74877a4f49b5500cb14f2ded4dbe3f41f30d135bb7a03ba432c0"
 
       def install
         bin.install "reget"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/Januznl/reget/releases/download/v0.1.1/reget_Linux_x86_64.tar.gz"
-      sha256 "86536ab448fca237caf300caff6420d5a8d3501f2b8ac524783e3c1c72df957d"
-
-      def install
-        bin.install "reget"
-      end
-    end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/Januznl/reget/releases/download/v0.1.1/reget_Linux_arm64.tar.gz"
-      sha256 "1ad4e95835a540d70eba340f04b68bf3ceaa5aa037c0eacb90e0291c05683748"
+      url "https://github.com/Januznl/reget/releases/download/v0.1.2/reget_Linux_x86_64.tar.gz"
+      sha256 "95c4891cd70c9fd5328dbcb1581548572df759c673eef98a46eb3fe590fe9cd4"
 
       def install
         bin.install "reget"
